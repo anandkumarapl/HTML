@@ -49,12 +49,12 @@ console.log(value2);
 // document.getElementById("d").innerHTML=JSON.stringify( value2);
 let n=value2.length;
 let out="<table border='1'>";
-    out+="<tr><th>Sno</th><th>Team 1</th><th>Team 2</th><th>Result</th><th>Delete</th></tr>";
+    out+="<tr><th>Sno</th><th>Team 1</th><th>Team 2</th><th>Result</th><th>Delete</th><th>Update</th></tr>";
 for(let i=0;i<=n-1;i++)
 {
     let v=value2[i];
     
-    out+="<tr><td>" + (i+1) + "</td><td>" + v.team1 + "</td><td>" + v.team2 + "</td><td>" + v.result  + "</td><td><a onClick='getDelete(" + v.id + ")' href='#'>Del</a></td></tr>";
+    out+="<tr><td>" + (i+1) + "</td><td>" + v.team1 + "</td><td>" + v.team2 + "</td><td>" + v.result  + "</td><td><a onClick='getDelete(" + v.id + ")' href='#'>Del</a></td><td><a onClick='getupdates(" + v.id + ")' href='#'>Upd</a></td></tr>";
 }
 out+='</table>';
 document.getElementById("d").innerHTML=out;
@@ -86,18 +86,31 @@ return value2;
 
 
 function getupdates(){
-    let url="http://localhost:999/update?team1="  + team1 + "&team2=" + team2 + "&result=" + result;
+    let url="http://localhost:999/update?id="+id;
     let p=fetch(url)
 p.then((response)=>{
       console.log(response.status)
       console.log(response.ok)
-      getupdates();
+      getMatches();
       return response.json()
 }).then((value2)=>{
 console.log(value2);
 return value2;
+let n=value2.length;
+let out="<table border='1'>";
+    out+="<tr><th>Sno</th><th>Team 1</th><th>Team 2</th><th>Result</th><th>Update</th></tr>";
+for(let i=0;i<=n-1;i++)
+{
+    let v=value2[i];
+    
+    out+="<tr><td>" + (i+1) + "</td><td>" + v.team1 + "</td><td>" + v.team2 + "</td><td>" + v.result  + "</td><a onClick='getupdates(" + v.id + ")' href='#'>Upd</a></td></tr>";
+}
+out+='</table>';
+document.getElementById("d").innerHTML=out;
+return value2;
 }) 
 }
+getupdates();
 // getupdates();
 //getMatches();
 //getDelete();
@@ -114,17 +127,17 @@ return value2;
                 <div class="col-md-4"></div>
                 <div class="col-md-5">
                     <div class="form-floating mb-3">
-            <label for="team1" class="form-label">Team1</label>
+            <label for="team1" class="form-label"></label>Team1
             <input id="team1" type="text" class="form-control">
           </div>
         <br>
         <div class="form-floating mb-4">
-            <label for="team2" class="form-label">Team2</label>
+            <label for="team2" class="form-label"></label>Team2
             <input id="team2" type="text" class="form-control">
           </div>
           <br>
           <div class="form-floating mb-4">
-            <label for="result" class="form-label">Result</label>
+            <label for="result" class="form-label"></label>Result
             <input id="result" type="text" class="form-control">
           </div>
     <br>
