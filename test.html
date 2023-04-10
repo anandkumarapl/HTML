@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test</title>
+    <script>
+        function f() {
+            let x = document.getElementById("t4");
+            console.log(x);
+            // x.type = "radio";
+            x.value = "mjjjggkg";
+
+        }
+
+        function ff() {
+            let x = document.getElementsByName("t");
+            // console.log(x);
+            // console.log(x[0]);
+            // x[0].value = "mjjjggkg";
+            let n = x.length;
+            console.log(n);
+            for (let i = 0; i <= n - 1; i++)
+                x[i].value = i;
+
+        }
+
+
+        function fff() {
+            let x = document.getElementsByName("t2")
+            let n = x.length;
+            console.log(n);
+            for (let i = 0; i <= n - 1; i++) {
+                x[i].value = i;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    T
+    <input type="text" id="t1" name="t">
+    <input type="text" id="t2" name="t">
+    <input type="text" id="t3" name="t">
+    <br> T2
+    <input type="text" id="t1" name="t2">
+    <input type="text" id="t2" name="t2">
+    <input type="text" id="t3" name="t2">
+    <br> T1
+    <input type="text" id="t4" name="t1">
+
+
+    <br>
+    <input type="button" value="Add" onclick="ff()">
+    <br>
+    <input type="button" value="Add" onclick="fff()">
+    <br>
+    <input type="button" value="Add" onclick="f()">
+
+</body>
+
+</html>

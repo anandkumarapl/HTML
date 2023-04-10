@@ -46,11 +46,39 @@ document.getElementById("d").innerHTML=out;
 return value2;
 }) 
 }
+
+function getQuestionno(){
+
+    let url="http://localhost:999/findallquestion?id=?";
+    let p=fetch(url)
+p.then((response)=>{
+      console.log(response.status)
+      console.log(response.ok)
+      return response.json()
+}).then((value2)=>{
+    console.log("Value 2");
+console.log(value2.question);
+let n=value2.length;
+let out="<table border='1'>";
+    out+="<tr><th>Sno</th><th>questionNo</th><th>question</th><th>ans</th></tr>";
+for(let i=0;i<=n-1;i++)
+{
+    let v=value2[i];
+    
+    out+="<tr><td>" + (i+1) + "</td><td>" + v.questionNo + "</td><td>" + v.question + "</td><td>" + v.ans  + "</td></tr>";
+}
+out+='</table>';
+document.getElementById("d").innerHTML=out;
+return value2;
+}) 
+
+}
+
     </script>
 <body>
     <div id="d"></div>
     <button onclick="getAll()" type="button" class="btn btn-primary">Get Results</button>
-    <center>
+    <center>   
         <div class="container">
             <div class="row">
                 <div class="col-md-4"></div>

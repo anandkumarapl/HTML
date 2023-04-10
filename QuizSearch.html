@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script>
+        let qno = 1;
+        let totalquestions = 4;
+        let question;
+        let ans;
+
+        function checkAnswer(givenanswer) {
+            console.log("1" + givenanswer);
+            console.log("2" + ans);
+            givenanswer = ("" + givenanswer).trim();
+            ans = ("" + ans).trim();
+            if (givenanswer == ans)
+                console.log("good");
+            else
+                console.log("bad");
+            SearchByQuestionNo();
+        }
+
+        function SearchByQuestionNo() {
+            if (qno > totalquestions) {
+                document.getElementById("question").value = "Test over";
+                return;
+            }
+            let url = "http://localhost:999/findbyquestion?questionNo=" + qno;
+            let p = fetch(url)
+            p.then((response) => {
+                console.log(response.status)
+                console.log(response.ok)
+                return response.json()
+            }).then((value2) => {
+                console.log("Value 2");
+                console.log(value2[0].question);
+                question = value2[0].question;
+                ans = value2[0].ans;
+                document.getElementById("question").value = question;
+                document.getElementById("questionNo").value = qno;
+                console.log("answer " + ans);
+                console.log("questionNo " + qno);
+                qno++;
+            })
+        }
+
+
+        function getresult() {
+
+
+
+        }
+    </script>
+
+    <style>
+        .header {
+            padding: 10px;
+            text-align: center;
+            background: #1abc9c;
+            color: black;
+            font-size: 10px;
+        }
+        
+        .questionNo {
+            padding: 10px;
+            text-align: center;
+            background: #0acb57;
+            color: white;
+            font-size: 10px;
+        }
+        
+        .question {
+            padding: 20px;
+            text-align: center;
+            background: #eb2604;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .questionNo {
+            padding: 20px;
+            text-align: center;
+            background: #05df59;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .getresult {
+            padding: 20px;
+            text-align: center;
+            background: #cddb05;
+            color: white;
+            font-size: 30px;
+        }
+        
+        .content {
+            padding: 10px;
+        }
+        
+        .question {
+            width: 1000px;
+        }
+        
+        .questionNo {
+            width: 1000px;
+        }
+        
+        .getresult {
+            width: 1000px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="header">
+        <h1>Quiz Game</h1>
+    </div>
+    <center>
+
+        <div id="d"></div>
+        <img src="images/1.jpg" width="200" height="200">
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-5">
+                    <div class="form-floating mb-3">
+
+                        <label for="questionNo" class="form-label"></label>QuestionNo
+                        <input id="questionNo" type="text" class="form-control">
+                    </div>
+
+                    <button onclick="SearchByQuestionNo()" type="button" class="btn btn-primary">Search</button>
+                    <br>
+                    <div class="form-floating mb-4">
+                        <br>
+                        <label for="question" class="form-label"></label>Question
+                        <input id="question" type="text" class="form-control">
+                    </div>
+
+                    <br>
+                    <div>
+                        <center>
+                            <button onclick="checkAnswer('true')" type="button" class="questionNo">True</button>
+
+                            <button onclick="checkAnswer('false')" type="button" class="question">False</button>
+                            <br>
+                            <button onclick="checkAnswer('false')" type="button" class="getresult">Get Result</button>
+                        </center>
+                        <div>
+    </center>
+
+
+</body>
+</head>>
+
+</html>
