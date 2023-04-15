@@ -8,10 +8,21 @@
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <style>
+        body {
+            background-color: black;
+            border: 20px solid blue;
+            text-align: center;
+        }
+        
+        body:hover {
+            border: 20px solid yellow;
+            transition: 5s;
+        }
+        
         h2 {
-            height: 100px;
+            height: 50px;
             font-size: xx-large;
-            box-shadow: 10px 10px 10px grey;
+            box-shadow: 10px 10px 10px rgb(18, 11, 11);
         }
         
         h2:hover {
@@ -23,17 +34,18 @@
         }
         
         .container {
+            margin: 50px;
             display: grid;
-            height: 100vh;
+            height: 70vh;
             grid-template-columns: auto auto auto;
             grid-template-rows: auto auto auto;
         }
         
         .r {
-            padding: 20px;
+            padding: 11px;
             text-align: center;
-            background: #0acb57;
-            color: rgb(10, 6, 6);
+            background: #cacecb;
+            background-color: rgb(10, 6, 6);
             font-size: 30px;
         }
         
@@ -46,31 +58,45 @@
         }
         
         .content {
-            padding: 10px;
+            padding: 20px;
         }
         
         .r {
-            width: 1300px;
+            width: 1400px;
         }
     </style>
     <script>
         let qno = 1;
-        let totalquestions = 4;
+        let totalquestions = 5;
         let question;
         let ans;
+        let score = 0;
+        let teststatus = "running";
 
         function checkAnswer(givenanswer) {
+            if (teststatus != "running")
+                return;
+            let result = "";
             console.log("1" + givenanswer);
             console.log("2" + ans);
             givenanswer = ("" + givenanswer).trim();
             ans = ("" + ans).trim();
-            if (givenanswer == ans) console.log("good");
-            else console.log("bad");
+
+            if (givenanswer == ans) {
+                result = "good";
+                score++;
+            } else {
+                result = "bad";
+                // score++;
+            }
+            alert("answer hai " + ans + " aur aapne bola " + givenanswer + " aur question hai " + question + " score " + score);
+            document.getElementById("bttnresult").innerHTML = result + " " + score;
             SearchByQuestionNo();
         }
 
         function SearchByQuestionNo() {
             if (qno > totalquestions) {
+                teststatus = "over";
                 document.getElementById("question").value = "Test over";
                 return;
             }
@@ -85,16 +111,15 @@
                 console.log(value2[0].question);
                 question = value2[0].question;
                 ans = value2[0].ans;
+                result = value2[0].ans;
                 document.getElementById("question").value = question;
                 document.getElementById("questionNo").innerHTML = qno;
                 console.log("answer " + ans);
+                alert(ans);
                 console.log("questionNo " + qno);
+                console.log("result" + result);
                 qno++;
             });
-        }
-
-        function getresult() {
-
         }
     </script>
 </head>
@@ -105,14 +130,14 @@
     </div>
     <div class="container">
         <div class="child-container" style="background-color: rgb(254, 254, 254)"></div>
-        <div class="r" style="background-color: rgb(245, 222, 179)">
+        <div class="r" style="background-color: rgb(20, 17, 11)">
             <label for="questionNo" class="form-label"></label>QuestionNo
-            <h2 id="questionNo" class="form-control"></h2>
+            <h2 id="questionNo" class="form-control">"Press any button to start the quiz"</h2>
         </div>
         <div class="child-container" style="background-color: rgb(253, 253, 253)"></div>
         <div class="child-container" style="background-color: rgb(255, 255, 255)">
         </div>
-        <div class="r" style="background-color: rgb(245, 222, 179)">
+        <div class="r" style="background-color: rgb(15, 12, 7)">
             <label for="question" class="form-label"></label>Question
             <input id="question" type="text" class="form-control" />
         </div>
@@ -121,20 +146,23 @@
         <div class="child-container" style="background-color: rgb(255, 255, 255)">
         </div>
 
-        <div class="r" style="background-color: rgb(245, 222, 179)">
+        <div class="r" style="background-color: rgb(17, 14, 8)">
             </button>
-
+            <br>
+            <br>
             <button onclick="checkAnswer('true')" type="button" class="r" style="background-color: rgb(15, 190, 42)">
           True
         </button>
-
+            <br>
+            <br>
             <button onclick="checkAnswer('false')" type="button" class="r" style="background-color: rgb(173, 16, 16)">
           False
         </button>
             <br />
-            <button onclick="getresult()('false')" type="button" class="r" style="background-color: rgb(193, 244, 84)">
-          Get Result
+            <button id="bttnresult" type="button" class="r" style="background-color: rgb(193, 244, 84)">
+        Result
         </button>
+
         </div>
 
         <div class="child-container" style="background-color: rgb(255, 255, 255)">
