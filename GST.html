@@ -25,7 +25,7 @@
 </style>
 <script>
     function All() {
-        let url = "http://localhost:999/getall";
+        let url = "http://192.168.170.134:999/getall";
         let p = fetch(url)
         p.then((response) => {
             return response.json();
@@ -36,7 +36,7 @@
             out += "<tr><th>ID</th><th>TEXT1</th><th>TEXT2</th><th>TEXT3</th></tr>"
             for (let i = 0; i < n; i++) {
                 let v = value[i];
-                out += "<tr><td>" + (i + 1) + "</td><td>" + v.text1 + "</td><td>" + v.text2 + "</td><td>" + v.text3 + "</td></tr>";
+                out += "<tr><td>" + v.id + "</td><td>" + v.text1 + "</td><td>" + v.text2 + "</td><td>" + v.text3 + "</td></tr>";
             }
             out += "</table>";
             document.getElementById("d").innerHTML = out;
@@ -52,7 +52,7 @@
         let text1 = document.getElementById("a").value;
         let text2 = document.getElementById("b").value;
         let text3 = document.getElementById("c").value;
-        let url = "http://localhost:999/A?text1=" + text1 + "&text2=" + text2 + "&text3=" + text3;
+        let url = "http://192.168.170.134:999/A?text1=" + text1 + "&text2=" + text2 + "&text3=" + text3;
         let p = fetch(url)
         p.then((response) => {
             return response.json();
@@ -64,8 +64,8 @@
 
 
     function text() {
-        let id = document.getElementById("d").value;
-        let url = "http://localhost:999/getby?id=" + id;
+        let id = document.getElementById("e").value;
+        let url = "http://192.168.170.134:999/getby?id=" + id;
         let p = fetch(url)
         p.then((response) => {
             return response.json();
@@ -79,9 +79,11 @@
     }
 
 
+
+
     setInterval(() => {
         All();
-    }, 10000)
+    }, 1000)
 
 
     /* setInterval(() => {
@@ -93,32 +95,35 @@
     Total Elements <br><span class="dot" id="j"></span>
     <br>
     <br>
+
+
+    <input type="text" id="e" name="" placeholder="Id"></input>
+    <label for="text1" id="E"></label>
     <br>
-    <button class="btn btn-primary" type="button" onclick="text()">Click On Me</button><br>
+    <br>
+    <button class="btn btn-primary" type="button" onclick="text()">Search By Id</button><br>
     <br>
     <br>
-    <!-- <h1></h1> -->
     <div>
-        <input type="text" id="e" name=""></input>
-        <label for="text1" id="E"></label>
+
         <br>
-        <input type="text" id="a" name=""></input>
+        <!-- <h1></h1> -->
+
+
+        <input type="text" id="a"></input>
         <label for="text1" id="A"></label>
         <br>
-        <input type="text" id="b"></input>
+        <input type="text" id="b" placeholder="text2"></input>
         <label for="text2" id="B"></label>
         <br>
-        <input type="text" id="c"></input>
+        <input type="text" id="c" placeholder="text3"></input>
         <label for="text3" id="C"></label>
-    </div>
-    <br>
-    <br>
-    <button class="btn btn-primary" type="button" onclick="Insert()">Insert</button>
-    <br>
-    <br>
-    <br>
-    <div>
-        <button class="btn btn-primary" type="button" onclick="All()">All</button>
+        <br>
+        <br>
+        <button class="btn btn-primary" type="button" onclick="Insert()">Insert</button>
+        <br>
+        <br>
+        <!-- <button class="btn btn-primary" type="button" onclick="All()">All</button>-->
         <p id="d">
         </p>
 

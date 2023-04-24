@@ -29,54 +29,10 @@
     body {
         background-color: #eee;
     }
-    
-    label.radio {
-        cursor: pointer;
-    }
-    
-    label.radio input {
-        position: absolute;
-        top: 0;
-        left: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-    
-    label.radio span {
-        padding: 4px 0px;
-        border: 1px solid red;
-        display: inline-block;
-        color: red;
-        width: 100px;
-        text-align: center;
-        border-radius: 3px;
-        margin-top: 7px;
-        text-transform: uppercase;
-    }
-    
-    label.radio input:checked+span {
-        border-color: red;
-        background-color: red;
-        color: #fff;
-    }
-    
-    .ans {
-        margin-left: 36px !important;
-    }
-    
-    .btn:focus {
-        outline: 0 !important;
-        box-shadow: none !important;
-    }
-    
-    .btn:active {
-        outline: 0 !important;
-        box-shadow: none !important;
-    }
 </style>
 <script>
-    let questions;
-    let questionno = 0;
+    let questions; //it is a variable to hold the questions
+    let questionno = 0; // questionno is a variable which initalized with zero
     let n;
 
     function download() {
@@ -93,21 +49,22 @@
         });
     }
 
-    let total = 0;
+    let score = 0;
 
-    function count() {
-
-        for (let i = 0; i <= 3; i++) {
+    function next() {
+        let givenanswer = detectAnswer();
+        console.log(givenanswer);
+        if (questionno == givenanswer) {
 
         }
 
-    }
 
-    function next() {
         document.getElementById("ee").style.display = "block";
         if (questionno >= n) {
 
-            document.getElementById("indes").innerHTML = "Test Over";
+
+            document.getElementById("index").innerHTML = "Test Over";
+            document.writeln("test has been finished");
             return;
         }
         let currentquestion = questions[questionno];
@@ -116,8 +73,24 @@
         document.getElementById("b").innerHTML = currentquestion.optb;
         document.getElementById("c").innerHTML = currentquestion.optc;
         document.getElementById("d").innerHTML = currentquestion.optd;
-        document.getElementById("indes").innerHTML = (questionno + 1);
+        document.getElementById("index").innerHTML = (questionno + 1);
         questionno++;
+    }
+
+    function detectAnswer() {
+        let selectedanswer = document.getElementById("opta").checked;
+        if (selectedanswer)
+            return 1;
+        selectedanswer = document.getElementById("optb").checked;
+        if (selectedanswer)
+            return 2;
+        selectedanswer = document.getElementById("optc").checked;
+        if (selectedanswer)
+            return 3;
+        selectedanswer = document.getElementById("optd").checked;
+        if (selectedanswer)
+            return 4;
+        return 0;
     }
     download();
 </script>
@@ -132,7 +105,7 @@
                             <h4>MCQ Quiz</h4><span> </span></div>
                     </div>
                     <div id="e">
-                        <h1 id="indes">
+                        <h1 id="index">
                         </h1>
                     </div>
 
@@ -141,13 +114,13 @@
                     <table>
                         <tr>
                             <div id="ee" style="display: none;" color="red">
-                                <div class="borderwa"> <input name="option" id="opta" value="1" type="radio">
+                                <div class="borderwa"> <input onchange="detectAnswer()" name="option" id="opta" value="1" type="radio">
                                     <label for="opta" id="a"></label></div>
-                                <div class="borderwa"> <input name="option" id="optb" value="2" type="radio">
+                                <div class="borderwa"> <input onchange="detectAnswer()" name="option" id="optb" value="2" type="radio">
                                     <label for="optb" id="b"></label></div>
-                                <div class="borderwa"> <input type="radio" name="option" id="optc" value="3">
+                                <div class="borderwa"> <input onchange="detectAnswer()" type="radio" name="option" id="optc" value="3">
                                     <label for="optc" id="c"></label></div>
-                                <div class="borderwa"> <input type="radio" name="option" id="optd" value="4">
+                                <div class="borderwa"> <input onchange="detectAnswer()" type="radio" name="option" id="optd" value="4">
                                     <label for="optd" id="d"></label></div><br> <br>
                             </div>
                         </tr>
@@ -155,7 +128,7 @@
                     <div>
                         <br>
                         <br>
-                        <h1 id="indes">
+                        <h1 id="index">
                         </h1>
                         <button class="btn btn-primary" onclick="next()" type="text" id="e">Next</button>
                     </div>
