@@ -37,6 +37,17 @@
     let k;
 
     function Weather() {
+        document.getElementById("index").innerHTML = "";
+        document.getElementById("h").value = "";
+        document.getElementById("a").value = "";
+        document.getElementById("b").value = "";
+        document.getElementById("c").value = "";
+        document.getElementById("d").value = "";
+        document.getElementById("e").value = "";
+        document.getElementById("f").value = "";
+        document.getElementById("g").value = "";
+        document.getElementById("img").src = "";
+
         k = document.getElementById("M").value;
         let url = "https://api.openweathermap.org/data/2.5/weather?q=" + k + "&appid=4a1f8a61b74546825af1e0be106e797b&units=metric#";
         let p = fetch(url);

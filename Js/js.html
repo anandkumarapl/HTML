@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    let k = [];
+
+
+    let url = "https://gist.githubusercontent.com/anandkumarapl/37843896b8f52cbb2929883d9d750cc7/raw/2745d30cbcf4e5dcca8b08f578a465b9a62dad59/gistfile1.txt";
+    let p = fetch(url);
+    p.then((response) => {
+        return response.json();
+    }).then((value) => {
+        console.log(value);
+        k = value;
+        console.log(k);
+        document.getElementById("a").value = value.name;
+    })
+
+
+
+    function B() {
+
+        document.getElementById("k").value = k.name;
+    }
+</script>
+
+<body>
+
+    <input type="text" id="a"></input>
+    <input type="text" id="k"></input>
+    <button onclick="B()"></button></body>
+
+</html>

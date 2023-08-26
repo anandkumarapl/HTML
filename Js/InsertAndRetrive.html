@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function insert() {
+        let Starttime = document.getElementById("a").value;
+        let Endtime = document.getElementById("b").value;
+        let name = document.getElementById("c").value;
+        let url = "http://localhost:999/a?Starttime=" + Starttime + "&Endtime=" + Endtime + "&name=" + name;
+        let p = fetch(url);
+        p.then((response) => {
+            return response.json();
+        }).then((value) => {
+            console.log(value);
+        })
+    }
+
+
+
+
+    function show() {
+        let url = "http://localhost:999/findall";
+        let p = fetch(url);
+        p.then((response) => {
+            return response.json();
+        }).then((value) => {
+            console.log(value);
+            let n = value.length;
+            for (let i = 0; i <= n - 1; i++) {
+                let v = value[i];
+                document.getElementById("d").innerHTML = v.starttime;
+                document.getElementById("e").innerHTML = v.endtime;
+                document.getElementById("f").innerHTML = v.name;
+            }
+        })
+    }
+</script>
+
+<body>
+    <h1 id="d"></h1>
+    <h1 id="e"></h1>
+    <h1 id="f"></h1>
+    <input type="text" id="a">
+    <input type="text" id="b">
+    <input type="text" id="c">
+    <button onclick="insert()">Click</button>
+    <button onclick="show()">show</button>
+
+
+</body>
+
+</html>

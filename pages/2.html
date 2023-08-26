@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChatGPT API Example</title>
+</head>
+
+<body>
+    <h1>ChatGPT API Example</h1>
+
+    <div>
+        <label for="question">Question:</label>
+        <input type="text" id="question" />
+        <button onclick="askQuestion()">Ask</button>
+    </div>
+
+    <div id="response"></div>
+
+    <script>
+        let requestCount = 0;
+
+        async function askQuestion() {
+            const questionInput = document.getElementById('question');
+            const question = questionInput.value.trim();
+            questionInput.value = '';
+
+            if (question === '') {
+                return;
+            }
+
+            const responseContainer = document.getElementById('response');
+            responseContainer.innerHTML = 'Loading...';
+
+            try {
+                const apiKey = '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'; // Replace with your OpenAI API key
+                const endpoint = 'https://api.openai.com/v1/chat/completions';
+                const model = 'gpt-3.5-turbo';
+
+                if (requestCount >= 5) {
+                    // Calculate exponential backoff delay
+                    const delay = 2 ** (requestCount - 4) * 1000;
+                    await sleep(delay);
+                }
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model,
+                        messages: [{
+                            role: 'system',
+                            content: 'You are a helpful assistant.'
+                        }, {
+                            role: 'user',
+                            content: question
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+                requestCount++;
+
+                if (response.ok) {
+                    const answer = data.choices[0].message.content;
+                    responseContainer.innerHTML = `<strong>Answer:</strong> ${answer}`;
+                } else if (response.status === 429) {
+                    // Retry the request after a certain delay
+                    const retryAfter = response.headers.get('Retry-After') || 5;
+                    await sleep(retryAfter * 1000);
+                    askQuestion();
+                } else {
+                    responseContainer.innerHTML = 'Error: Unable to get a response from the API.';
+                    console.error(data);
+                }
+            } catch (error) {
+                responseContainer.innerHTML = 'Error: An unexpected error occurred.';
+                console.error(error);
+            }
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
+</head>
+<style>
+    .imgs {
+        height: 200px;
+        width: 200px;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="accordion" id="accordionExample">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="varanasi/api.jpg" class="card-img-top" alt="..." class="imgs">
+                        <div class="card-body">
+                            <h5 class="card-title">Call Api Using JavaScript</h5>
+                            <p class="card-text">An application programming interface (API) is a way for two or more computer programs to communicate with each other.</p>
+                            <div class="accordion-item">
+                                <div class="accordion" id="accordionExample">
+                                    <h2 class="accordion-header" id="headingOne">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Read More
+                              </button>
+                                    </h2>
+                                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="collapseOne" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong>In this example, we create a new XMLHttpRequest object and use the open() method to specify the HTTP method (GET) and API URL. We then define an onload()
+                                            function that will be called when the response is received. We use the JSON.parse() method to extract the JSON data from the response body. Note that in both examples, we handle any errors that may occur using
+                                            the catch() method in the fetch() example or checking the status of the XHR response in the XHR example.
+
+                                            <h3>Code</h3>
+                                            <p>let url = "https://gist.githubusercontent.com/anandkumarapl/37843896b8f52cbb2929883d9d750cc7/raw/2745d30cbcf4e5dcca8b08f578a465b9a62dad59/gistfile1.txt"; let p = fetch(url);</p>
+                                            <p> p.then((response) => {</p>
+                                            <p> return response.json();</p>
+                                            <p> }).then((value) => {</p>
+                                            <p> console.log(value);</p>
+                                            <p> k = value;</p>
+                                            <p>console.log(k);</p>
+                                            <p>document.getElementById("a").value = value.name;</p>
+                                            })</p>
+                                            <button><a href="https://github.com/anandkumarapl/Spring-Practice/commits/main">Read More</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="varanasi/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="accordion-item">
+                                <div class="accordion" id="accordionExample">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Accordion Item #2
+                              </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="collapseTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+                                            the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            <button><a href="https://github.com/anandkumarapl/Spring-Practice/commits/main">Read More</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="varanasi/3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="accordion-item">
+                                <div class="accordion" id="accordionExample">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                
+                              </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+                                            the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            <button><a href="https://github.com/anandkumarapl/Spring-Practice/commits/main">Read More</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="varanasi/1.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Call Api Using JavaScript</h5>
+                            <p class="card-text">we are calling the API at "https://api.example.com/data". The fetch() method returns a Promise object that resolves with a Response object representing the response to the request. We then call the json() method on the Response
+                                object to extract the JSON data from the response body.</p>
+                            <div class="accordion-item">
+                                <div class="accordion" id="accordionExample">
+                                    <h2 class="accordion-header" id="headingFour">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+                                Read More
+                              </button>
+                                    </h2>
+                                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="collapseFour" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong>In this example, we create a new XMLHttpRequest object and use the open() method to specify the HTTP method (GET) and API URL. We then define an onload()
+                                            function that will be called when the response is received. We use the JSON.parse() method to extract the JSON data from the response body. Note that in both examples, we handle any errors that may occur using
+                                            the catch() method in the fetch() example or checking the status of the XHR response in the XHR example.
+
+                                            <h3>Code</h3>
+                                            <p>let url = "https://gist.githubusercontent.com/anandkumarapl/37843896b8f52cbb2929883d9d750cc7/raw/2745d30cbcf4e5dcca8b08f578a465b9a62dad59/gistfile1.txt"; let p = fetch(url);</p>
+                                            <p> p.then((response) => {</p>
+                                            <p> return response.json();</p>
+                                            <p> }).then((value) => {</p>
+                                            <p> console.log(value);</p>
+                                            <p> k = value;</p>
+                                            <p>console.log(k);</p>
+                                            <p>document.getElementById("a").value = value.name;</p>
+                                            })</p>
+                                            <button><a href="https://github.com/anandkumarapl/Spring-Practice/commits/main">Read More</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="varanasi/2.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="accordion-item">
+                                <div class="accordion" id="accordionExample">
+                                    <h2 class="accordion-header" id="headingTwo">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Accordion Item #2
+                              </button>
+                                    </h2>
+                                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="collapseTwo" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+                                            the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            <button><a href="https://github.com/anandkumarapl/Spring-Practice/commits/main">Read More</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="varanasi/3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                            <div class="accordion-item">
+                                <div class="accordion" id="accordionExample">
+                                    <h2 class="accordion-header" id="headingThree">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                                
+                              </button>
+                                    </h2>
+                                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                        <div class="accordion-body">
+                                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall
+                                            appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within
+                                            the <code>.accordion-body</code>, though the transition does limit overflow.
+                                            <button><a href="https://github.com/anandkumarapl/Spring-Practice/commits/main">Read More</a></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+
+</html>

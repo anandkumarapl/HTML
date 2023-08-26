@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Slider</title>
+    <style>
+        img {
+            width: 100px;
+        }
+        
+        h1 {
+            display: inline-block;
+            width: 200px;
+            padding: 10px;
+        }
+        
+        .maindiv {
+            border: blue;
+            border-style: ridge;
+            border-width: 2px;
+            margin: 20px;
+        }
+        
+        input {
+            width: 200px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="maindiv">
+        <h1>Name</h1><input type="text" id="txtName">
+        <br>
+        <h1>Author</h1><input type="text" id="txtAuthor">
+        <br>
+        <h1>Pic</h1><img id="imgBook" src="">
+        <br>
+        <input type="button" onclick="prev()" value="<<">
+        <input type="button" onclick="next()" value=">>">
+
+    </div>
+</body>
+<script>
+    function getBook(bookname, bookauthor, bookpic) {
+        return {
+            name: bookname,
+            author: bookauthor,
+            pic: bookpic
+        };
+    }
+    let books = [getBook("Basic C", "Sachin", "1.jpg"), getBook("Basic C++", "Rahul", "2.jpg"), getBook("Adv C", "Sourav", "3.jpg")];
+    let n = books.length;
+    let index = -1;
+
+    function prev() {
+        if (index <= 0)
+            return;
+        index--;
+        let currentbook = books[index];
+        document.getElementById("txtName").value = currentbook.name;
+        document.getElementById("txtAuthor").value = currentbook.author;
+        document.getElementById("imgBook").src = "images/" + currentbook.pic;
+    }
+
+    function next() {
+        if (index >= n - 1)
+            return;
+        index++;
+        let currentbook = books[index];
+        document.getElementById("txtName").value = currentbook.name;
+        document.getElementById("txtAuthor").value = currentbook.author;
+        document.getElementById("imgBook").src = "images/" + currentbook.pic;
+
+    }
+
+    next();
+</script>
+
+</html>
+
+
+
+
+<!--This is an HTML page that includes some CSS styling and JavaScript code. The page displays an object slider that allows the user to navigate through a collection of books.
+
+The slider contains a header, three input fields for book information (name, author, and pic), and two buttons for moving to the previous and next book in the collection.
+
+The JavaScript code defines a function to create book objects and then creates an array of book objects with name, author, and pic properties.
+
+The code also defines two functions for moving to the previous and next book in the collection, and an index variable that keeps track of the current book being displayed.
+
+When the page loads, the next() function is called, which initializes the slider to display the first book in the collection.
+
+When the user clicks on the "<<" or ">>" buttons, the prev() or next() function is called, respectively, which updates the input fields and book image to display the previous or next book in the collection.-->

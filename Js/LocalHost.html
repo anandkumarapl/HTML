@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="b">
+    <div id="b"></div>
+    <button onclick="api()">save</button>
+    <button onclick="get()">get</button>
+</body>
+<script>
+    function dosave() {
+        let c = document.getElementById('b').value;
+        var data = localStorage.setItem('b', JSON.stringify(c));
+        console.log(data);
+    }
+
+    function get() {
+        var d = localStorage.getItem('b');
+        let data = JSON.parse(d);
+        document.getElementById('b').value = data;
+        console.log(d);
+    }
+
+    function api() {
+        let url = "https://gist.githubusercontent.com/anandkumarapl/37843896b8f52cbb2929883d9d750cc7/raw/2745d30cbcf4e5dcca8b08f578a465b9a62dad59/gistfile1.txt";
+        let p = fetch(url);
+        p.then((response) => {
+            return response.json();
+        }).then((value) => {
+            console.log(value);
+            let c = document.getElementById('b').innerHTML = value.name + "" + value.age;
+            var data = localStorage.setItem('b', JSON.stringify(c));
+            console.log(data);
+        })
+    }
+</script>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ChatGPT API Example</title>
+</head>
+
+<body>
+    <h1>ChatGPT API Example</h1>
+
+    <div>
+        <label for="question">Question:</label>
+        <input type="text" id="question" />
+        <button onclick="askQuestion()">Ask</button>
+    </div>
+
+    <div id="response"></div>
+
+    <script>
+        async function askQuestion() {
+            const questionInput = document.getElementById('question');
+            const question = questionInput.value.trim();
+            questionInput.value = '';
+
+            if (question === '') {
+                return;
+            }
+
+            const responseContainer = document.getElementById('response');
+            responseContainer.innerHTML = 'Loading...';
+
+            try {
+                const apiKey = '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'; // Replace with your OpenAI API key
+                const endpoint = 'https://api.openai.com/v1/chat/completions';
+                const model = 'gpt-3.5-turbo';
+
+                const response = await fetch(endpoint, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${apiKey}`
+                    },
+                    body: JSON.stringify({
+                        model,
+                        messages: [{
+                            role: 'system',
+                            content: 'You are a helpful assistant.'
+                        }, {
+                            role: 'user',
+                            content: question
+                        }]
+                    })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    const answer = data.choices[0].message.content;
+                    responseContainer.innerHTML = `<strong>Answer:</strong> ${answer}`;
+                } else {
+                    responseContainer.innerHTML = 'Failed to get a response from the API.';
+                    console.error(data);
+                }
+            } catch (error) {
+                responseContainer.innerHTML = 'An unexpected error occurred.';
+                console.error(error);
+            }
+        }
+    </script>
+</body>
+
+</html>
