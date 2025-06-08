@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    function Sub() {
+        let a = parseFloat(document.getElementById("A").value);
+        let b = parseFloat(document.getElementById("B").value);
+        let s = a - b;
+        console.log(s);
+        document.getElementById("x").value = s;
+    }
+</script>
+
+<body>
+    <h1>Add</h1>
+    A1 <input type="text" id="a"><br> <br> A2 <input type="text" id="b"><br> <br>
+    <input type="button" onclick="Add()" value="Submit"><br><br> Output <input type="text" id="c">
+    </button>
+    <h1>Sub</h1>
+    A1 <input type="text" id="A"><br> <br> A2 <input type="text" id="B"><br> <br>
+    <input type="button" onclick="Sub()" value="Submit"><br><br> Output <input type="text" id="x">
+    </button>
+    <h1>Div</h1>
+    A1<input type="text" id="x"><br><br> A2
+    <input type="text" id="y"><br><br>
+    <input type="button" onclick="Div()" value="Submit"><br><br> Output<input type="text" id="k">
+</body>
+<script>
+    function Add() {
+        let i = parseFloat(document.getElementById("a").value);
+        let j = parseFloat(document.getElementById("b").value);
+        let k = i + j;
+        document.getElementById("c").value = k;
+        console.log(k);
+    }
+</script>
+<script>
+    function Div() {
+        let i = parseFloat(document.getElementById("x").value);
+        let j = parseFloat(document.getElementById("y").value);
+        let n = i + j;
+        console.log(n);
+        document.getElementById("k").value = n;
+    }
+</script>
+
+</html>

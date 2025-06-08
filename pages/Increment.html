@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Counter</title>
+</head>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+    }
+    
+    .counter {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 20px;
+    }
+    
+    button {
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    
+    #count {
+        font-size: 24px;
+        margin: 0 20px;
+    }
+</style>
+
+<body>
+    <div class="counter">
+        <button id="decrement">-</button>
+        <span id="count">0</span>
+        <button id="increment">+</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+<script>
+    // Get elements by their IDs
+    const decrementButton = document.getElementById('decrement');
+    const incrementButton = document.getElementById('increment');
+    const countElement = document.getElementById('count');
+
+    let count = 0;
+
+    // Function to update the count and display it
+    function updateCount() {
+        countElement.textContent = count;
+    }
+
+    // Event listener for the decrement button
+    decrementButton.addEventListener('click', () => {
+        count--;
+        updateCount();
+    });
+
+    // Event listener for the increment button
+    incrementButton.addEventListener('click', () => {
+        count++;
+        updateCount();
+    });
+
+    // Initial count display
+    updateCount();
+</script>
+
+</html>
